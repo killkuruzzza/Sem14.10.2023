@@ -1,3 +1,4 @@
+package Market;
 public abstract class Actor implements ActorBehavoir{
     protected final String name;
     protected  boolean isTakeOrder;

@@ -1,7 +1,11 @@
+package Market;
+
+
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class Market implements MarketBehaviour, QueueBehaviour{
+public class Market implements MarketBehaviour, QueueBehaviour {
     private final List<Actor> queue;
 
     public Market() {
@@ -23,7 +27,6 @@ public class Market implements MarketBehaviour, QueueBehaviour{
     }
 
 
-
     @Override
     public void takeInQueue(Actor actor) {
         System.out.println(actor.getName() + " встал в очередь");
@@ -32,8 +35,8 @@ public class Market implements MarketBehaviour, QueueBehaviour{
 
     @Override
     public void takeOrders() {
-        for (Actor actor: queue) {
-            if(!actor.isMakeOrder()) {
+        for (Actor actor : queue) {
+            if (!actor.isMakeOrder()) {
                 actor.setMakeOrder(true);
                 System.out.println(actor.getName() + " сделал свой заказ");
             }
@@ -42,8 +45,8 @@ public class Market implements MarketBehaviour, QueueBehaviour{
 
     @Override
     public void giveOrders() {
-        for (Actor actor : queue){
-            if (actor.isMakeOrder){
+        for (Actor actor : queue) {
+            if (actor.isMakeOrder) {
                 actor.setTakeOrder(true);
                 System.out.println(actor.getName() + " получил свой заказ");
             }
@@ -54,13 +57,14 @@ public class Market implements MarketBehaviour, QueueBehaviour{
     public void releaseFromQueue() {
         List<Actor> relasedActors = new ArrayList<>();
         for (Actor actor : queue) {
-            if (actor.isTakeOrder){
+            if (actor.isTakeOrder) {
                 relasedActors.add(actor);
                 System.out.println(actor.getName() + " вышел из очереди и готов уходить");
-           }
+            }
         }
         releaseFromMarket(relasedActors);
     }
+
     @Override
     public void update() {
         takeOrders();

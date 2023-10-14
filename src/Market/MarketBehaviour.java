@@ -1,3 +1,5 @@
+package Market;
+
 import java.util.List;
 
 public interface MarketBehaviour {
